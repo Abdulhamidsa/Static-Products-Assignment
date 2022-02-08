@@ -150,8 +150,8 @@ footer {
 }
 
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(950px, 300px));
     gap: 3em;
     justify-content: flex-start;
 }
@@ -165,7 +165,13 @@ img {
     max-width: 100%;
 }
 
-.products {}
+.products {
+    display: grid;
+    width: max-content;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 100px));
+    gap: 3em;
+    justify-content: center;
+}
 
 .big-container {
     display: flex;
@@ -189,11 +195,20 @@ img {
 
 .products:nth-child(1),
 .products:nth-child(3),
-.products:nth-child(7) {
-    opacity: 0.4;
+.products:nth-child(7) {}
+
+
+/* .sold-out {
+
+    display: none;
+} */
+
+.products.sold-out {
+    opacity: 0.5;
 }
 
-.sold-out {
+.products.sold-out::before {
+    content: "sold out";
     position: absolute;
     color: #000000;
     font-size: 20px;
@@ -205,20 +220,39 @@ img {
     right: 0;
 }
 
-.discount {
+img {
+    width: 100%;
+}
+
+.on-sale {
     position: absolute;
     color: #ffffff;
     font-size: 20px;
     padding: 10px;
-    background-color: rgb(255, 0, 0);
     font-family: "poppins", sans-serif;
     bottom: 0;
     right: 0;
 }
 
-.products:hover {
-    transform: scale(1.05);
-    transition: transform 200ms ease-in-out;
+.products .discounted,
+.products .price span {
+    display: none;
+    color: rgb(228, 15, 15);
+}
+
+.products.onSale .price {
+    text-decoration: line-through;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.products.onSale .discounted {
+    display: initial;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.products . .products:hover {
+    /*     transform: scale(1.05);
+    transition: transform 200ms ease-in-out; */
 }
 
 .product-content {
