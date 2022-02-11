@@ -50,6 +50,6 @@ function showProduct(product) {
     copy.querySelector(".discount-amount").textContent = -product.discount + "%";
     copy.querySelector(".price").textContent =
         product.price + ",00" + " " + "DKK";
-    const parent = document.querySelector("body");
+    const parent = document.querySelector("main");
     parent.appendChild(copy);
 }
