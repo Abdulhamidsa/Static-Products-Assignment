@@ -1,5 +1,4 @@
 const url = "https://kea-alt-del.dk/t7/api/products";
-
 fetch(url)
     .then(function(res) {
         return res.json();
@@ -10,22 +9,7 @@ fetch(url)
 
 function handleProductList(data) {
     data.forEach(showProduct);
-    /*     console.log(data);
-     */
 }
-
-/** <div class="products">
-
-                <a href="product.html"><img src="./imgs/1526.webp" alt="a picture of a t-shirt">
-                    <p class="sold-out">Sold out!!</p>
-                    <div class="product-content">
-                        <h3>Big Cat Backpack Black</h3>
-                        <p>Apparel | T-shirts</p>
-                        <p>1500kr.</p>
-                    </div>
-
-                </a>
-            </div>**/
 
 function showProduct(product) {
     console.log(product);
@@ -34,6 +18,11 @@ function showProduct(product) {
     copy.querySelector(
         ".subtle"
     ).textContent = `${product.articletype} | ${product.brandname}`;
+    /*    document.querySelector(".product-name").textContent =
+                                          product.productdisplayname; */
+
+    document.querySelector(".category-name").textContent = product.category;
+
     copy.querySelector("h3").textContent = product.productdisplayname;
 
     if (product.soldout) {
@@ -50,6 +39,12 @@ function showProduct(product) {
     copy.querySelector(".discount-amount").textContent = -product.discount + "%";
     copy.querySelector(".price").textContent =
         product.price + ",00" + " " + "DKK";
+    copy.querySelector(
+        ".product-img"
+    ).src = `https://kea-alt-del.dk/t7/images/webp/1000/${product.id}.webp`;
+    copy.querySelector("a").setAttribute("href", `product.html?id=${product.id}`);
+    copy;
+
     const parent = document.querySelector("main");
     parent.appendChild(copy);
 }
